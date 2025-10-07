@@ -1,0 +1,53 @@
+// ... (mantenha os estilos que já tinha para o seletor de humor)
+
+.card-registro {
+  margin-bottom: 24px;
+}
+
+.analysis-section {
+  ion-item-divider {
+    --background: transparent;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-left: 0;
+    margin-top: 16px;
+  }
+  
+  ion-segment {
+    margin: 16px 0;
+  }
+}
+
+.kpi-card {
+  text-align: center;
+  background: var(--ion-color-light);
+
+  .kpi-value {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--ion-color-primary);
+    line-height: 1;
+  }
+  
+  .kpi-label {
+    font-size: 1rem;
+    color: var(--ion-color-medium-shade);
+  }
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--ion-color-medium);
+  margin-top: 4rem;
+
+  ion-icon {
+    font-size: 4rem;
+  }
+  p { margin: 4px 0; }
+}
+
+// Garante que os cards tenham um espaçamento
+ion-card {
+  margin-left: 0;
+  margin-right: 0;
+}
