@@ -64,8 +64,10 @@ ion-content {
   --background: #f7f7f7;
   --padding-start: 15px;
   --highlight-color-focused: #5c6bc0;
+  --background: #f7f7f7 !important;
   border-radius: 10px;
   margin-bottom: 18px;
+
 
   ion-label {
     font-weight: 500;
@@ -79,7 +81,8 @@ ion-content {
   /* MUDANÇA #2: Regra para o label QUANDO o campo já foi tocado/preenchido mas não está focado */
   &.item-has-value:not(.item-has-focus) ion-label,
   &.ion-touched:not(.item-has-focus) ion-label {
-    color: #666; /* Garante que o label flutuante continue visível (cinza escuro) */
+    color: #666;
+    /* Garante que o label flutuante continue visível (cinza escuro) */
   }
 }
 
@@ -126,4 +129,11 @@ ion-content {
   padding-left: 5px;
   margin-top: -12px;
   margin-bottom: 12px;
+}
+
+.admin-link-container {
+  margin-top: 15px;
+  color: #7986cb;
+  text-decoration: none;
+  font-size: 0.9em;
 }

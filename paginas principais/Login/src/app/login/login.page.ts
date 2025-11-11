@@ -1,18 +1,20 @@
+// src/app/login/login.page.ts (COM A LÓGICA DE LOGIN)
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-// IMPORTS NECESSÁRIOS
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
+// <-- ADIÇÃO 1: Importar o AuthService
+import { AuthService } from '../services/auth.service';
+
 @Component({
   selector: 'app-login',
-  templateUrl: './login.page.html', // Nome do arquivo corrigido
-  styleUrls: ['./login.page.scss'],   // Nome do arquivo corrigido
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
   standalone: true,
   imports: [
-    // ADICIONE OS MÓDULOS AQUI
     IonicModule,
     CommonModule,
     ReactiveFormsModule
@@ -21,7 +23,12 @@ import { IonicModule } from '@ionic/angular';
 export class LoginPage implements OnInit {
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) { }
+  // <-- ADIÇÃO 2: Injetar o AuthService no construtor
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private auth: AuthService // <-- Adicionado
+  ) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -38,11 +45,37 @@ export class LoginPage implements OnInit {
     return this.loginForm.get('password');
   }
 
-  login() {
+  // <-- ADIÇÃO 3: Modificamos a função login
+  async login() { // A função agora é 'async'
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
       return;
     }
-    console.log('Dados do formulário para login:', this.loginForm.value);
+
+    console.log('Tentando logar com:', this.loginForm.value);
+
+    try {
+      // 1. (FUTURO) É AQUI QUE VOCÊ CHAMA O FIREBASE
+      // ex: await this.firebaseService.login(this.loginForm.value.email, this.loginForm.value.password)
+      
+      // 2. (POR ENQUANTO) Vamos simular os dados do usuário
+      // Quando tiver Firebase, você vai pegar isso do banco de dados
+      const dadosDoUsuarioSimulado = {
+        nome: "Usuário Synapso",
+        email: this.loginForm.value.email,
+        // Usando uma foto padrão do Ionic como placeholder
+        photoURL: "https://ionicframework.com/docs/img/demos/avatar.svg" 
+      };
+
+      // 3. CHAMAMOS O AUTHSERVICE (como planejamos)
+      await this.auth.loginComSucesso(dadosDoUsuarioSimulado);
+
+      // 4. Navegamos de volta para a home
+      this.router.navigateByUrl('/home');
+
+    } catch (err) {
+      console.error("Erro ao tentar fazer login:", err);
+      // (Opcional) Aqui você pode mostrar um Alerta/Toast dizendo "Email ou senha inválidos"
+    }
   }
 }

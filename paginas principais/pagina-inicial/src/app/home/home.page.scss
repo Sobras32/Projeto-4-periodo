@@ -281,3 +281,11 @@ ion-toolbar.header-toolbar ion-title,
 ion-toolbar.header-toolbar ion-button {
   color: #ffffff !important;
 }
+
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border: 2px solid var(--synapso-blue-light);
+  cursor: pointer;
+}
