@@ -29,4 +29,9 @@ export class HomePage {
     this.router.navigateByUrl('/perfil'); 
   }
 
+  goToDiary() {
+    // Troque '/diario' pela rota correta da sua página de diário
+    this.router.navigateByUrl('/diario');
+  }
+
 }
