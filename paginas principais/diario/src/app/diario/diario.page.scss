@@ -5,15 +5,15 @@
 
   /* Cor de Texto Padrão */
   --ion-text-color: #333333;
-  --ion-text-color-secondary: #A8A3A1;
+  --ion-text-color-secondary: #888888;
 
   /* Cor de Destaque (Verde Sálvia) */
-  --ion-color-primary: #E5A88C;
+  --ion-color-primary: #B2C2B1;
   --ion-color-primary-rgb: 178, 194, 177;
   --ion-color-primary-contrast: #FFFFFF;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #c9937b;
-  --ion-color-primary-tint: #e7b098;
+  --ion-color-primary-shade: #9cae9c;
+  --ion-color-primary-tint: #b9cbb9;
 }
 
 /* Deixa o header com a cor de fundo da página */
@@ -22,10 +22,25 @@ ion-toolbar {
   --border-width: 0; // Remove linha do header
 }
 
-/* Estilizando o Calendário */
+/* * ↓↓↓ CORREÇÃO DO CALENDÁRIO (LADO DIREITO) ↓↓↓
+ * O ion-content tem um padding SÓ NA DIREITA (ex: 16px).
+ */
 ion-datetime {
   --background: var(--ion-background-color);
-  margin-top: 10px;
+  
+  /* 1. Empurramos o calendário para a direita para preencher o espaço */
+  margin-right: -16px; /* (Use -16px ou -20px se 16 não for suficiente) */
+  
+  /* 2. Adicionamos a largura extra que empurramos */
+  width: calc(100% + 16px); /* (Use +16px ou +20px) */
+
+  /* 3. Garantimos que a esquerda fica alinhada */
+  margin-left: 0;
+  
+  /* 4. Remove margens verticais */
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-inline: 0;
 
   /* Cor do dia selecionado */
   .datetime-day[data-selected="true"] {
@@ -41,10 +56,16 @@ ion-datetime {
   }
 }
 
-/* Estilizando o Card de Edição */
+/* * ↓↓↓ CORREÇÃO DO CARD ↓↓↓
+ * Como o ion-content não tem padding na esquerda, o card
+ * colaria na borda. Forçamos a margem de 16px em todos os lados.
+ */
 .editor-card {
   --background: #FFFFFF;
-  margin: 16px;
+  
+  /* Força a margem em todos os lados */
+  margin: 16px; 
+
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
 }
