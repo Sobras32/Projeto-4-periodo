@@ -1,0 +1,7 @@
+{
+  "name": "login-adm",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

@@ -1,0 +1,73 @@
+/*
+ * Tema base do Synapso
+ * Corrige o modo escuro automático e define uma paleta consistente.
+ */
+
+:root {
+  /* --------- CORES PRINCIPAIS --------- */
+  --ion-color-primary: #3b6978;
+  --ion-color-primary-rgb: 59, 105, 120;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #325a68;
+  --ion-color-primary-tint: #4d7f8f;
+
+  --ion-color-secondary: #84a98c;
+  --ion-color-secondary-rgb: 132, 169, 140;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #73967a;
+  --ion-color-secondary-tint: #96b99d;
+
+  --ion-color-tertiary: #a8d0e6;
+  --ion-color-tertiary-rgb: 168, 208, 230;
+  --ion-color-tertiary-contrast: #000000;
+  --ion-color-tertiary-contrast-rgb: 0, 0, 0;
+  --ion-color-tertiary-shade: #94b9cd;
+  --ion-color-tertiary-tint: #b9daeb;
+
+  --ion-color-success: #2dd36f;
+  --ion-color-warning: #ffc409;
+  --ion-color-danger: #eb445a;
+  --ion-color-medium: #92949c;
+  --ion-color-light: #f4f7f6;
+
+  --ion-color-primary: #3b6978;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-light: #f4f7f6;
+  --ion-color-dark: #333333;
+
+  /* --------- TEXTO E FUNDO --------- */
+  --ion-background-color: #f4f7f6;
+  --ion-background-color-rgb: 244, 247, 246;
+  --ion-text-color: #333333;
+  --ion-text-color-rgb: 51, 51, 51;
+
+  /* --------- TIPOGRAFIA --------- */
+  --ion-font-family: 'Nunito', sans-serif;
+
+  ion-header,
+  ion-toolbar.header-toolbar {
+    --background: var(--ion-color-primary) !important;
+    /* azul escuro */
+    --color: #ffffff !important;
+    /* título e botões em branco */
+  }
+
+  ion-title,
+  ion-toolbar.header-toolbar ion-button {
+    color: #ffffff !important;
+  }
+}
+
+/*
+ * 🔧 Desativa o modo escuro automático
+ * Ionic normalmente herda do sistema, então aqui a gente mata o dark mode.
+ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: light;
+    --ion-background-color: #f4f7f6 !important;
+    --ion-text-color: #333333 !important;
+  }
+}
