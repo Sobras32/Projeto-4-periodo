@@ -1,20 +1,21 @@
-// src/app/home/home.module.ts
+// src/app/home/home.module.ts (Versão Corrigida)
 
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common'; // <-- 1. IMPORTE AQUI
-import { IonicModule } from '@ionic/angular';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HomePage } from './home.page';
-
+import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
+
+import { HomePage } from './home.page'; // 1. Importa a página
 
 @NgModule({
   imports: [
-    CommonModule, // <-- 2. ADICIONE AQUI
+    CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    HomePage // <-- 2. ADICIONE A PÁGINA AQUI (em imports)
   ],
-  declarations: [HomePage]
+  declarations: [] // <-- 3. DEIXE O DECLARATIONS VAZIO
 })
 export class HomePageModule {}

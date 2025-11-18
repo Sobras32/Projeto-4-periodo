@@ -92,7 +92,7 @@ export class MoodDashboardPage implements AfterViewInit {
       options: {
         plugins: {
           legend: { display: false },
-          tooltip: { callbacks: { label: (context) => `${context.parsed.y.toFixed(1)}%` } }
+          tooltip: { callbacks: { label: (context) => `${(context.parsed.y || 0).toFixed(1)}%` } }
         },
         scales: { y: { beginAtZero: true, title: { display: true, text: 'Porcentagem (%)' } } }
       }

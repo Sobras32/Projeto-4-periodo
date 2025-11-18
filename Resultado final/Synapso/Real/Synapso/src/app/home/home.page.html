@@ -8,11 +8,11 @@
 
       <ion-buttons slot="end">
 
-        <ion-button *ngIf="!auth.isLoggedIn" (click)="goToLogin()" fill="outline" color="light" class="login-button">
+        <ion-button *ngIf="!(auth.isLoggedIn | async)" (click)="goToLogin()" fill="outline" color="light" class="login-button">
           Login
         </ion-button>
 
-        <ion-avatar *ngIf="auth.isLoggedIn" (click)="goToProfile()" class="profile-avatar">
+        <ion-avatar *ngIf="auth.isLoggedIn | async" (click)="goToProfile()" class="profile-avatar">
           <img [src]="auth.user?.photoURL" />
         </ion-avatar>
 

@@ -1,30 +1,60 @@
+// src/app/home/home.page.ts (Versão com mais funções)
+
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { Autenticacao } from '../services/autenticacao';
+import { Router, RouterModule } from '@angular/router';
+import { AutenticacaoService } from '../services/autenticacao.service';
+import { IonicModule } from '@ionic/angular';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  standalone: false, // Mantendo como estava no seu original
+  standalone: true,
+  imports: [
+    IonicModule,
+    CommonModule,
+    RouterModule
+  ]
 })
 export class HomePage {
 
-  // Este é o construtor correto, com as injeções
   constructor(
-    public auth: Autenticacao,
-    private router: Router // Agora o 'Router' é reconhecido por causa da importação
-  ) {}
+    public auth: AutenticacaoService, // O service agora é público
+    private router: Router
+  ) { }
 
-  // Estas são as funções que adicionamos
+  // Função de Logout
+  fazerLogout() {
+    this.auth.logout()
+      .then(() => {
+        console.log("Usuário deslogado");
+      })
+      .catch((error) => {
+        console.error("Erro ao fazer logout:", error);
+      });
+  }
+
+  // --- FUNÇÕES QUE FALTAVAM ---
+
+  // Função para o botão de Login
   goToLogin() {
-    // Coloque a rota da sua página de login
-    this.router.navigateByUrl('/login'); 
+    this.router.navigate(['/login']);
   }
 
+  // Função para o avatar de perfil (exemplo)
   goToProfile() {
-    // Coloque a rota da sua página de perfil
-    this.router.navigateByUrl('/perfil'); 
+    // Você ainda não tem uma página de perfil,
+    // então vamos mandar para o dashboard por enquanto.
+    this.router.navigate(['/dashboard']); 
   }
 
+  // --- Funções de navegação ---
+  irParaDiario() {
+    this.router.navigate(['/diario']);
+  }
+
+  irParaDashboard() {
+    this.router.navigate(['/dashboard']);
+  }
 }
